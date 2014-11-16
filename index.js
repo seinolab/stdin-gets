@@ -47,11 +47,13 @@ exports.csv = function (interpreters, callback_for_each_line, callback_for_eof) 
 
   stdin.gets(function (buf, linenum) {
 
-    var csv = buf.split(",").map(function (e, i) {
-      return typeof interpreters[i] === "function" ? interpreters[i](e) : e;
-    });;
-
-    callback_for_each_line(csv, linenum);
+    var csv = buf.split(",");
+    if (csv.length > 0) {
+      csv.map(function (e, i) {
+        return typeof interpreters[i] === "function" ? interpreters[i](e) : e;
+      });
+      callback_for_each_line(csv, linenum);
+    }
 
   }, callback_for_eof);
 

@@ -90,7 +90,6 @@ Result
   'GBP/USD',
   1.56635,
   1.56721 ]
-[ Invalid Date ]
 [EOF]
 ```
 
